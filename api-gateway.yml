@@ -2,13 +2,44 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: api-gateway
+
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
+      routes:
+        - id: category-service
+          uri: lb://CATEGORY-SERVICE
+          predicates:
+            - Path=/api/categories/**, /swagger-ui/**, /swagger-ui.html, /v3/api-docs/**
 
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/products/**, /swagger-ui/**, /swagger-ui.html, /v3/api-docs/**
+
+        # ✅ USER SERVICE ADDED
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/users/**, /swagger-ui/**, /swagger-ui.html, /v3/api-docs/**
+            
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka-server:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+
+info:
+  app:
+    name: API Gateway
+    version: 1.0
