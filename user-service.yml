@@ -2,8 +2,12 @@ server:
   port: 8081
 
 spring:
+  application:
+    name: user-service
+
+
   datasource:
-    url: jdbc:mysql://user-mysql:3306/auth_db
+    url:  url: jdbc:mysql://user-mysql:3306/auth_db?createDatabaseIfNotExist=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
