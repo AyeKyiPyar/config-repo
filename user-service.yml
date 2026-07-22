@@ -7,7 +7,7 @@ spring:
 
 
   datasource:
-    url:  url: jdbc:mysql://user-mysql:3309/auth_db?createDatabaseIfNotExist=true
+    url:  url: jdbc:mysql://user-mysql:3306/auth_db?createDatabaseIfNotExist=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
