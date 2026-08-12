@@ -11,12 +11,12 @@ spring:
         - id: category-service
           uri: lb://CATEGORY-SERVICE
           predicates:
-            - Path=/api/categories/**, /swagger-ui/**, /swagger-ui.html, /v3/api-docs/**
+            - Path=/api/categories/**
 
         - id: product-service
           uri: lb://PRODUCT-SERVICE
           predicates:
-            - Path=/api/products/**, /swagger-ui/**, /swagger-ui.html, /v3/api-docs/**
+            - Path=/api/products/**
 
         # ✅ USER SERVICE ADDED
         - id: user-service
